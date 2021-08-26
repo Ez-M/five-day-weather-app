@@ -1,17 +1,89 @@
+header {
+    text-align: center;
+    font-size: 300%;
+}
+
+.list-group  {   
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 4px 0 4px 0;
+    color: rgb(9, 126, 250);
+    font-size: 24px;
+    font-weight: bold;
+    left: -1px;
+    padding: 10px 7px 5px;
+    height:500px;
+    overflow:scroll;
+    overflow-x:hidden;
+}
+
+/* Key Elements */
+
+h1 {
+    color:rgb(9, 126, 250);
+    background-color: rgba(179, 207, 223, 0.192);
+    font-family: 'Montserrat', sans-serif;
+}
+
+h3 {
+    color:seashell;
+}
 
 
-html, body {
-    height: 100%;
+
+/* Side Bar */
+.list-group  {   
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 4px 0 4px 0;
+    color: rgb(9, 126, 250);
+    font-size: 24px;
+    font-weight: bold;
+    left: -1px;
+    padding: 10px 7px 5px;
+    height:500px;
+    overflow:scroll;
+    overflow-x:hidden;
+}
+
+.list-group-item {
+    color:rgb(9, 126, 250);
+}
+
+
+
+.card-title , .card-text-1 , .card-text-2, .card-text-3 {
+    color:rgb(9, 126, 250);
     
 }
-.container {
-    height: 100%;
-}
-.row {
-    height: 100%;
+.card-body .container-02{
+    background-color: rgba(179, 207, 223, 0.192);
 }
 
-.sidebar {
-    min-height: 100%;
+.p-5 {
+    padding: 1rem!important;
+}
+
+/* The 5-Day Title */
+
+#fivedayCard , h2 {
+    margin-left: 1em;
+    color:cornsilk;
+}
+#search-btn {
+    background-color: rgb(9, 126, 250);
+    color:cornsilk;
+}
+
+#search-input {
+    width: 80%!important;
+    }
+
+.temp{
+    display: inline;
+}
+
+img {
+    max-width: fit-content;
 }
 

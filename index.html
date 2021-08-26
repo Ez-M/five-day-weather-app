@@ -13,20 +13,69 @@
 
 <body>
 
-    <div class="container">
+    <figure class="text-center">
+        <blockquote class="blockquote">
+            <p>
+            <h1><strong> Weather Dashboard </strong></h1>
+            </p>
+        </blockquote>
+    </figure>
+    <div class="row align-center justify-center min-100-vh bg-primary">
+        <div class="col-12 col-md-3  bg-light p-5 ">
+            <h1 class="text-primary">Search for a City</h1>
+            <form id="search-form" class="form w-100">
+                <input id="search-input" class="form-input w-100" type="text" placeholder="City Name"
+                    name="search-input">
+                <br>
+                <br>
+                <button class="btn btn-info btn-block" id="search-btn">Search</button>
+            </form>
 
-
-        <div class="row">
-            <div class="col-sm-4 bg-secondary" id="sidebar" >col-sm-4</div>
-            <div class="col-sm-8 bg-light bg-opacity-10">
-                <divc class="main-card col-sm-6 bg-secondary bg-opacity-10">kek</div>
+            <div class="container-01" style="width: 100%;">
+                <ul class="list-group list-group-flush">
+                </ul>
             </div>
+
+
+        </div>
+
+
+        <!-- Dashboard Display -->
+
+        <div class="col-12 col-md-9 container-02" id="append-info">
+            <h3 class="col-12 nameDetails"> City Name: <span>Date</span></h3>
+            <div class="row col-12">
+                <h3 class="col-4 temp">Current Temp: </h3>
+                <h3 class="col-4 temp">Minimum Temp:</h3>
+                <h3 class="col-4 temp">Maximum Temp:</h3>
+            </div>
+            <div class="col-12 row">
+                <h3 class="col-4 nameDetails"> Wind: </h3>
+                <h3 class="col-4 nameDetails"> Humidity: </h3>
+                <h3 class="col-4 nameDetails"> UV Index: </h3>
+            </div>
+
+            <h2 id="fivedayCard"> 5-Day Forecast:
+
+            </h2>
+            <!-- Card container -->
+            <div class="card-group row">
+
+                <div class="card col-12 col-md-2">
+                    <img src="https://images.unsplash.com/photo-1509114397022-ed747cca3f65?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
+                        class="card-img-top" alt="a red cloud in the sky ">
+                    <div class="card-body">
+                        <h5 class="card-title" id="date-card">Date: <span> data.results[i].date </span></h5>
+                        <p class="card-text-1">Temp: <span> # </span></p>
+                        <p class="card-text-2">Wind: <span> # </span></p>
+                        <p class="card-text-3">Humidity: <span> # </span></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
-
-
-
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
