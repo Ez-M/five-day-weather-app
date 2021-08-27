@@ -2,6 +2,7 @@
 
 city search
     -text entry field
+        -need to receive user input as text
     
 fetch current and future conditions for that city 
     -Pass city searched to OneWeather API, 
