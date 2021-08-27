@@ -2,7 +2,8 @@ var searchIn = "";
 var dayUrl = "";
 var cityLat = "";
 var cityLon = "";
-var cleanedIn = ""; 
+var cleanedIn = "";
+var oneUrl = "";
 var fromUrl = location;
 
 
@@ -36,7 +37,7 @@ function search() {
             console.log(data.main.temp);
             updateMain(data);
             getCord(data);
-
+            search02();
             // $("#cTemp").text('Current Temp: '+data.main.temp);
             // $("#minTemp").text("Minimum Temp: "+data.main.temp_min);
             // $("#maxTemp").text("Maximum Temp: "+data.main.temp_max);
@@ -48,10 +49,39 @@ function search() {
 
 }
 
+function search02() {
+    oneUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&units=imperial&appid=24d006899a454dfd2614392530a22f1a"
+    fetch(oneUrl, {
+
+        method: 'get', //get is the default
+    })
+        // checks if response is an error and errors out if it is
+        .then(function (response) {
+            if (response.status !== 200) {
+                console.log(response);
+                console.log("Error: City Not Found!")
+                return;
+            }
+
+            return response.json();
+
+        })
+
+        .then(function (data) {
+            console.log(data);
+            updateCard(data);
+
+
+        });
+
+}
+
+
 
 
 /*This function handles updating each of the text elements in the
 main forcast card */
+//note: uv index is updated by updateCard due to limitations of weather API
 function updateMain(data) {
     $("#nameMain").text(data.name);
     $("#cTemp").text('Current Temp: ' + data.main.temp);
@@ -71,9 +101,27 @@ function getCord(data) {
     console.log(cityLat);
 };
 
+//updates all cards, note that this also updates UV index on main
+function updateCard(data) {
+    $(".card-group").html("");
+    for (var i = 0; i < 5; i++) {
+
+        $(".card-group").append('<div class="card col-12 col-md-2 c0' + [i] + '"></div>');
+        $(".c0"+[i]).append('<img src="https://images.unsplash.com/photo-1509114397022-ed747cca3f65?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80" class="card-img-top" alt="a red cloud in the sky ">');
+        $(".c0"+[i]).append('<div class="card-body c1'+[i]+'"></div>');
+        $(".c1"+[i]).append('<h5 class="card-title" id="date-card">Date: <span> </span></h5>')
+        $(".c1"+[i]).append('<p class="card-text-1">Temp: <span>'+data.daily[i].temp.day+'</span></p>')
+        $(".c1"+[i]).append('<p class="card-text-2">Wind: <span>'+data.daily[i].wind_speed+' MPH</span></p>')
+        $(".c1"+[i]).append('<p class="card-text-3">Humidity: <span>'+data.daily[i].humidity+'</span></p>')
+        $(".c1"+[i]).append(' ' )
+
+    };
+
+};
+
 //Cleans user input and stores it as a seperate var
-function cleanIn () {
-    cleanedIn= searchIn.trim();
+function cleanIn() {
+    cleanedIn = searchIn.trim();
     cleanedIn = cleanedIn.replace(/ /g, "%20")
 
 };
