@@ -83,7 +83,7 @@ function search02() {
 main forcast card */
 //note: uv index is updated by updateCard due to limitations of weather API
 function updateMain(data) {
-    $("#nameMain").text(data.name);
+    $("#nameMain").html(data.name+' '+moment().format("dddd, MMMM Do YYYY")+ '<img src="http://openweathermap.org/img/wn/'+data.weather[0].icon+'@2x.png" class="card-img-top" alt="Weather Icon">');
     $("#cTemp").text('Current Temp: ' + data.main.temp);
     $("#minTemp").text("Minimum Temp: " + data.main.temp_min);
     $("#maxTemp").text("Maximum Temp: " + data.main.temp_max);
@@ -107,9 +107,9 @@ function updateCard(data) {
     for (var i = 0; i < 5; i++) {
 
         $(".card-group").append('<div class="card col-12 col-md-2 c0' + [i] + '"></div>');
-        $(".c0"+[i]).append('<img src="https://images.unsplash.com/photo-1509114397022-ed747cca3f65?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80" class="card-img-top" alt="a red cloud in the sky ">');
+        $(".c0"+[i]).append('<img src="http://openweathermap.org/img/wn/'+data.daily[i].weather[0].icon+'@2x.png" class="card-img-top" alt="a red cloud in the sky ">');
         $(".c0"+[i]).append('<div class="card-body c1'+[i]+'"></div>');
-        $(".c1"+[i]).append('<h5 class="card-title" id="date-card">Date: <span> </span></h5>')
+        $(".c1"+[i]).append('<h5 class="card-title" id="date-card">Date: '+moment().add(1+[i], "days").format("MMMM Do")+'</h5>')
         $(".c1"+[i]).append('<p class="card-text-1">Temp: <span>'+data.daily[i].temp.day+'</span></p>')
         $(".c1"+[i]).append('<p class="card-text-2">Wind: <span>'+data.daily[i].wind_speed+' MPH</span></p>')
         $(".c1"+[i]).append('<p class="card-text-3">Humidity: <span>'+data.daily[i].humidity+'</span></p>')
