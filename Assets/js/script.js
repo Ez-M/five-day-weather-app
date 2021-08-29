@@ -104,12 +104,13 @@ function getCord(data) {
 //updates all cards, note that this also updates UV index on main
 function updateCard(data) {
     $(".card-group").html("");
+    var days = moment().format("MMMM Do");
     for (var i = 0; i < 5; i++) {
 
         $(".card-group").append('<div class="card col-12 col-md-2 c0' + [i] + '"></div>');
         $(".c0"+[i]).append('<img src="http://openweathermap.org/img/wn/'+data.daily[i].weather[0].icon+'@2x.png" class="card-img-top" alt="a red cloud in the sky ">');
         $(".c0"+[i]).append('<div class="card-body c1'+[i]+'"></div>');
-        $(".c1"+[i]).append('<h5 class="card-title" id="date-card">Date: '+moment().add(1+[i], "days").format("MMMM Do")+'</h5>')
+        $(".c1"+[i]).append('<h5 class="card-title" id="date-card">Date: '+moment().add(i+1, "d").format("MMMM Do")+'</h5>')
         $(".c1"+[i]).append('<p class="card-text-1">Temp: <span>'+data.daily[i].temp.day+'</span></p>')
         $(".c1"+[i]).append('<p class="card-text-2">Wind: <span>'+data.daily[i].wind_speed+' MPH</span></p>')
         $(".c1"+[i]).append('<p class="card-text-3">Humidity: <span>'+data.daily[i].humidity+'</span></p>')
