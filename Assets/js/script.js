@@ -89,7 +89,7 @@ function updateMain(data) {
     $("#maxTemp").text("Maximum Temp: " + data.main.temp_max);
     $("#wind").text("Wind: " + data.wind.speed + "MPH");
     $("#humidity").text("Humidity: " + data.main.humidity);
-    $("#UV").text("UV Index: " + data.main.temp_max);
+
 
 
 };
@@ -113,10 +113,17 @@ function updateCard(data) {
         $(".c1"+[i]).append('<p class="card-text-1">Temp: <span>'+data.daily[i].temp.day+'</span></p>')
         $(".c1"+[i]).append('<p class="card-text-2">Wind: <span>'+data.daily[i].wind_speed+' MPH</span></p>')
         $(".c1"+[i]).append('<p class="card-text-3">Humidity: <span>'+data.daily[i].humidity+'</span></p>')
-        $(".c1"+[i]).append(' ' )
+        
+        
 
     };
-
+    $("#UV").text("UV Index: " + data.current.uvi);
+    if (data.current.uvi > 2){
+    $("#UV").attr("background-color: ", "orange");
+    }
+    else if (data.current.uvi >5) {
+        $("#UV").attr("background-color: ", "red");
+    }
 };
 
 //Cleans user input and stores it as a seperate var
